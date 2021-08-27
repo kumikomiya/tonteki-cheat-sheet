@@ -22,7 +22,7 @@ x = evaluate(0b1000000000010_1000000000000_0011000000001_0001000000000)
 print(x)  # returned 2491
 ```
 
-The bit pattern above means a combination of `A♣ 3♣ A♦ Q♡ J♡ 2♡ J♠`, and returned 2491 means AJ two pair with a Q kicker.
+The bit pattern above means a combination of `A♣ 3♣ A♢ Q♡ J♡ 2♡ J♠`, and returned 2491 means AJ two pair with a Q kicker.
 
 Average execution time was 1.3μs (observed on author's local PC). This is enough fast for normal use, but a little unsatisfied for calculating showdown equity mentioned below.
 

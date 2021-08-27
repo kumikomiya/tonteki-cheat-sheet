@@ -12,8 +12,8 @@ def evaluate(pattern):
     Args:
         pattern (int): A 52-bit bit pattern that represents seven cards.
                        Note that the number of ON bits must be definitely seven.
-                       For example, the following bit pattern means a combination of K♣ 3♣ A♦ Q♡ J♡ 2♡ J♠.
-                               ♣      |      ♦      |      ♡      |      ♠
+                       For example, the following bit pattern means a combination of K♣ 3♣ A♢ Q♡ J♡ 2♡ J♠.
+                               ♣      |      ♢      |      ♡      |      ♠
                          AKQJT98765432_AKQJT98765432_AKQJT98765432_AKQJT98765432
                        0b0100000000010_1000000000000_0011000000001_0001000000000 = 0x4014000c02200
     Returns:
