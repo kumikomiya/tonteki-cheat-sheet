@@ -2,9 +2,9 @@
 # Overview
 Bothered with evaluating poker hands?
 
-*Tonteki* is a very simple Python library that helps you calculate the strength from seven cards on Texas Hold'em.
+*Tonteki* is a very simple Python library that helps you calculate strength from seven cards on Texas hold'em.
 
-*Tonteki* uses only 2.6MB lookup tables, so it could be installed in almost any environment, and you would be able to rewrite it in another language easily because of its simple implementation.
+*Tonteki* uses only 2.6MB lookup tables, so it could be installed in almost any environment, and you would be able to rewrite it in another language easily if you want, because of its simple implementation.
 
 # Functions
 *Tonteki* defines only two functions, no classes.

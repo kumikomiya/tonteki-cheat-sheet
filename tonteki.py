@@ -28,7 +28,7 @@ def evaluate(pattern):
              1610 - 2467: Three of a kind
              2468 - 3325: Two pair
              3326 - 6185: One pair
-             6186 - 7462: High card
+             6186 - 7462: Highcard
     """
     octet = 0
     value = 9999
@@ -48,6 +48,7 @@ def _define_bit_positions(codes, suits):
 
 
 _POS = {}
+_define_bit_positions(_POS, ['s', 'h', 'd', 'c'])
 _define_bit_positions(_POS, ['♠', '♡', '♢', '♣'])
 _define_bit_positions(_POS, ['♤', '♥', '♦', '♧'])
 
