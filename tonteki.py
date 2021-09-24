@@ -1,6 +1,7 @@
 import multiprocessing
 import offsuit
 import suited
+import winrate
 from functools import reduce
 from itertools import combinations
 
@@ -36,15 +37,14 @@ def evaluate(pattern):
         o, v = suited.TABLE[(pattern >> i) & 0x1fff]
         octet += o
         value = min(v, value)
-    res = min(offsuit.TABLE[octet], value)
-    return res
+    return min(offsuit.TABLE[octet], value)
 
 
-def _define_bit_positions(codes, suits):
+def _define_bit_positions(dict_, suits):
     ranks = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
     for i, suit in enumerate(suits):
         for j, rank in enumerate(ranks):
-            codes[rank + suit] = i * 13 + j
+            dict_[rank + suit] = i * 13 + j
 
 
 _POS = {}
@@ -136,3 +136,25 @@ def calculate_equity_in_parallel(active_hands, mucked_hands, board):
     n = len(active_hands)
     sums = reduce(lambda a, b: [a[i] + b[i] for i in range(n)], results, [0] * n)
     return [sum / len(future_patterns) for sum in sums]
+
+
+def get_win_rate(hand, headcount):
+    """
+    Calculates the win rate of a starting hand.
+
+    Args:
+        hand (str): A string that represents a pair of cards. e.g) "A♠ T♠"
+        headcount (int): A number of players who participates the game. It must be between 2 and 10.
+    Returns:
+        int: The probability of winning in permille.
+    """
+    ps = [_POS[card] for card in hand.split()]
+    r = [12 - p % 13 for p in ps]
+    s = [p // 13 for p in ps]
+    n = headcount - 2
+    i = min(r)
+    j = max(r)
+    if s[0] == s[1]:
+        return winrate.TABLE[n][i][j]
+    else:
+        return winrate.TABLE[n][j][i]
